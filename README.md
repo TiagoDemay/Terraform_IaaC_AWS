@@ -104,6 +104,7 @@ git clone https://github.com/TiagoDemay/Terraform_IaaC_AWS.git
 ```
 3. Rodar o script para baixar a imagem e executar o container
 ```sh
+cd Terraform_IaaC_AWS/
 sudo ./container_terraform.sh
 ```
 
@@ -124,13 +125,39 @@ Lembre-se que a pasta que você iniciou o projeto está sendo compartilhada como
 
 Pelo bem ou pelo mal, apagar ou alterar qualquer arquivo na pasta no seu "host" irá alterar os arquivos dentro do container e vice e versa.
 
-<!-- USAGE EXAMPLES
+USAGE EXAMPLES
 ## Usage
+  
+Para fazer a utilização deste projeto você deve seguir as seguintes etapas:
+
+1. Criar um bucket s3 na AWS, aqui eu estou criando um backend em um bucket S3 para salvar o estado da infraestrutura, no arquivo terraform/main.tf
+    * Se prefirir ter tudo local, comente a linha 8 até a 14 
+    * Se prefirir manter a mesma topologia coloque o nome do seu bucket na linha 11
+    * Este projeto foi feito na região "us-east-2", caso queira alterar esta configuração deve ser feita neste mesmo arquivo. 
+2.  Para os comandos abaixos você deve estar dentro do cointainer e passar as credenciais da sua conta na AWS
+```sh
+/app/terraform # export AWS_ACCESS_KEY_ID="AKXXXXXXXXXXXXXXXXXX"
+/app/terraform # export AWS_SECRET_ACCESS_KEY="5DXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+```
+3.  Agora dentro da pasta terraform daremos o comando para iniciar o terraform e configurar nosso buckend s3
+```sh
+/app/terraform # terraform init
+```
+sua resposta deve ser parecida com esta:
+<br />
+<p align="left">
+  <a href="https://github.com/TiagoDemay/Terraform_IaaC_AWS/tree/master/images">
+    <img src="images/ConfigBackend.png" alt="Logo" width="1000" height="400">
+  </a>
+ </p> 
+ 
+4.  
+
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
- -->
+
 
 
 <!-- ROADMAP -->
