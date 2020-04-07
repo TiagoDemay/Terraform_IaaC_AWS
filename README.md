@@ -188,10 +188,19 @@ Durante minhas pesquisas e a criação desta imagem, eu consegui gerar uma chave
 * Segue a baixo os comandos para conseguir decriptografar a senha do usuário em um arquivo de texto.
 
 ```sh
-
+terraform output password | base64 -d > test.txt 
+gpg --decrypt test.txt > file.txt
 ``` 
-
-
+* A senha estará no arquivo criado file.txt
+* A configuração dessa senha de login do usuário está no arquivo terraform/iam.tf, no recurso demonstrado abaixo:
+```
+resource "aws_iam_user_login_profile" "profile" {
+  user                    =  aws_iam_user.user.name
+  pgp_key                 =  var.pgp_key
+  password_reset_required =  true
+  password_length         =  10  
+}
+```
 
 <!-- ROADMAP -->
 ## Roadmap
