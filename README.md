@@ -139,7 +139,7 @@ Para fazer a utilização deste projeto você deve seguir as seguintes etapas:
 /app/terraform # export AWS_ACCESS_KEY_ID="AKXXXXXXXXXXXXXXXXXX"
 /app/terraform # export AWS_SECRET_ACCESS_KEY="5DXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ```
-3.  Agora dentro da pasta terraform daremos o comando para iniciar o terraform e configurar nosso buckend s3
+3.  Agora dentro da pasta terraform daremos o comando para iniciar o terraform e configurar nosso backend s3
 ```sh
 /app/terraform # terraform init
 ```
@@ -151,12 +151,45 @@ sua resposta deve ser parecida com esta:
   </a>
  </p> 
  
-4.  
+4.  Agora criaremos um plano no terraform, para analisar as mudanças que ele irá fazer a sua conta AWS.
+* O nome do seu arquivo de saída pode ser qualquer um escolhido por você, para que fique didático eu escolhi o nome "plano" 
+
+```sh
+/app/terraform # terraform plan -out plano
+```  
+* Na saída do seu terminal estão todas as modificações que serão feitas na sua estrutura na região escolhida da AWS.
+* Um detalhe muito legal do terraform é que aqui ele demonstra tudo que será adicionado, alterado ou destruido na sua insfraestrutura com um toque para facilitar a visualização:
+    1. to add     --- trás um simbolo de adição (+) em verde para demostrar o que será criado.
+    2. to change  --- trás um simbolo de til (~) em amarelo para demostrar mudança de estado do recurso criado.
+    3. to destroy --- trás um simbolo de subtração (-) em vermelho para demonstrar o que será excluido da infraestrutura.
+* Ainda neste passo é possivel "debugar" erros de programação e analisar respostas de recursos a serem criados, antes de subir a estrutura para a AWS, basta alterar os arquivos e recursos que desejar, salvar os documentos alterados e rodar o comando novamente, até ficar satisfeito com o PLANO de criação.
+* Se for a primeira vez que roda o programa ele deve mostrar:
+ Plan: 41 to add, 0 to change, 0 to destroy.    
+
+5. Então depois de analisar se é isso mesmo que você deseja criar é só dar o comando: 
+```sh
+/app/terraform # terraform apply "plano"
+``` 
+E simples assim sua infraestrutura será criada.
+
+Na saída do seu terminal deverá aparecer outups:
+
+1. ARN_USER: onde tem o numero da conta onde o usuário user.user1 poderá acessar e o nome do usuário também aparece aqui.
+2. A lista de IPv4 publico que suas instancias adquiriram no momento da criação.
 
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+## Observação sobre a senha de login ao Console AWS, que é criada para user.user1 neste projeto.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
++ Para criar o acesso para o usuário, precisamos trabalhar com um tipo de criptografia assimétrica do tipo "gpg", à qual eu não conheço muito ainda.
+Durante minhas pesquisas e a criação desta imagem, eu consegui gerar uma chave criptográfica assimétrica utilizando esta tecnologia, logo nesta imagem já temos uma chave tipo "gpg" que é necessária para criar a segurança e conseguir gerar a senha de acesso ao console. 
+
++ ATENÇÃO: só altere esta chave e as configurações do gpg no container, se você tiver conhecimento sobre o que está fazendo e saiba que estas alterações irão modificar alguns procedimentos aqui dos quais eu ainda não conseguiria ajudar.
+
+* Segue a baixo os comandos para conseguir decriptografar a senha do usuário em um arquivo de texto.
+
+```sh
+
+``` 
 
 
 
