@@ -191,7 +191,8 @@ Durante minhas pesquisas e a criação desta imagem, eu consegui gerar uma chave
 terraform output password | base64 -d > test.txt 
 gpg --decrypt test.txt > file.txt
 ``` 
-* A senha estará no arquivo criado file.txt
+* A senha pedida para descriptografar o gpg é: "terraform"
+* A senha de login do console, já descriptografada estará no arquivo criado file.txt
 * A configuração dessa senha de login do usuário está no arquivo terraform/iam.tf, no recurso demonstrado abaixo:
 ```
 resource "aws_iam_user_login_profile" "profile" {
