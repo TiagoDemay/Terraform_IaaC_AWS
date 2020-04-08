@@ -7,14 +7,14 @@ variable "vpc_cidr_block" {
 
 ######################## Numero de instancias por ALuno #####################
 variable "qd_instancias" {
-  default = "12"
+  default = "5"
 }
 ############################################################################
 
 
 
 variable "id_user" {
-  default = "1"
+  default = "2"
 }
 
 variable "az_count" {
