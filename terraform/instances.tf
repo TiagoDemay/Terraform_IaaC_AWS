@@ -1,6 +1,6 @@
 resource "aws_instance" "user1" {
     count           = var.qd_instancias
-             
+                 
     ami             = "ami-077cf8407f0b2025c"
     instance_type   = "t2.micro"
     key_name        = aws_key_pair.my_key.key_name
@@ -9,7 +9,7 @@ resource "aws_instance" "user1" {
      
     tags = {
         Name                   =  "Ubuntu${count.index + 1}"
-        "Owner${var.id_user}" =  "user.user${var.id_user}"
+        "Owner${var.id_user}" =  "${var.id_user}"
     }
     depends_on   =  [aws_security_group.sg]
 }

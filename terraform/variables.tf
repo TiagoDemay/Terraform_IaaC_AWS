@@ -7,10 +7,14 @@ variable "vpc_cidr_block" {
 
 ######################## Numero de instancias por ALuno #####################
 variable "qd_instancias" {
-  default = "5"
+  default = "3"
 }
 ############################################################################
-
+variable "user_names" {
+  description = "Create IAM users with these names"
+  type        = list(string)
+  default     = ["neo", "trinity", "morpheus", "demayssss"]
+}
 
 
 variable "id_user" {
@@ -20,8 +24,6 @@ variable "id_user" {
 variable "az_count" {
   default = "1"
 }
-
-
 
 
 
