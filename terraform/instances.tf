@@ -14,9 +14,6 @@
 #     depends_on   =  [aws_security_group.sg]
 # }
 
-
-
-
 locals {
   # We've included this inline to create a complete example, but in practice
   # this is more likely to be loaded from a file using the "file" function.
@@ -29,6 +26,7 @@ locals {
     1,105,neo.matrix,t2.micro,ami-077cf8407f0b2025c
     1,106,neo.matrix,t2.micro,ami-077cf8407f0b2025c
     1,107,neo.matrix,t2.micro,ami-077cf8407f0b2025c
+    1,108,neo.matrix,t2.micro,ami-077cf8407f0b2025c
     2,201,trinity.matrix,t2.micro,ami-077cf8407f0b2025c
     3,301,morpheus.matrix,t2.micro,ami-077cf8407f0b2025c
     4,401,demays.matrix,t2.micro,ami-077cf8407f0b2025c
