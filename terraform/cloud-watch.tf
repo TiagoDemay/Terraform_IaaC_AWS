@@ -1,7 +1,7 @@
 
 resource "aws_cloudwatch_metric_alarm" "foobar" {
-  count                = var.qd_instancias
-  alarm_name           = "StopMachine-${element(aws_instance.user1.*.id, count.index)}"
+  count                = length(local.instances)
+  alarm_name           = "StopMachine-${element(values(aws_instance.inst)[*].id, count.index)}"
   namespace            = "AWS/EC2"
   evaluation_periods   = "5"
   period               = "1200"
@@ -13,7 +13,7 @@ resource "aws_cloudwatch_metric_alarm" "foobar" {
   metric_name          = "CPUUtilization"
 
   dimensions = {
-    InstanceId = element(aws_instance.user1.*.id, count.index)
+    InstanceId = element(values(aws_instance.inst)[*].id, count.index)
   }
 
 } 

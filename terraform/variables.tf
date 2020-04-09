@@ -13,7 +13,7 @@ variable "qd_instancias" {
 variable "user_names" {
   description = "Create IAM users with these names"
   type        = list(string)
-  default     = ["neo", "trinity", "morpheus", "demayssss"]
+  default     = ["neo.matrix", "trinity.matrix", "morpheus.matrix", "demays.matrix"]
 }
 
 
