@@ -1,3 +1,4 @@
+
 resource "aws_cloudwatch_metric_alarm" "foobar" {
   for_each     =  toset(data.aws_instances.data.ids)
   

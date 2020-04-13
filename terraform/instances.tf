@@ -52,6 +52,4 @@ resource "aws_instance" "inst" {
         Name                          =  "IdGroup-${each.key}"
         "Owner${each.value.id_user}"  =  each.value.name  
     }
-    depends_on   =  [aws_security_group.sg]  
-
 }

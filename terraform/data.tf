@@ -9,11 +9,10 @@ data "aws_iam_policy" "ChangePass" {
 }
 
 data "aws_instances" "data" {
-  filter {
-    name   = "tag:Name"
-    values = ["*"]
-  }
-
-  instance_state_names = ["running", "stopped"]
+    filter {
+        name   = "tag:Name"
+        values = ["*"]
+    }
+    instance_state_names = ["running", "stopped"]
 }
 
