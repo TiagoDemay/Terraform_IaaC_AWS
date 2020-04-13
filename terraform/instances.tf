@@ -1,9 +1,3 @@
-
-locals {
-  instances = csvdecode(file("/app/planilha.csv"))
-}
-
-
 resource "aws_instance" "inst" {
     for_each = { for inst in local.instances : inst.id_group => inst }
 

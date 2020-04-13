@@ -5,16 +5,16 @@ resource "aws_iam_group" "group" {
 }
 
 resource "aws_iam_user" "user" {
-    for_each   = toset(var.user_names)
-    name       = each.value
+    for_each = { for newuser in local.iams_keys : newuser.id_user => newuser}
+    name       = each.value.name
     path       = "/system/"
 
     depends_on = [aws_iam_group.group]
 }
 
 resource "aws_iam_user_login_profile" "profile" {
-    for_each                 =  toset(var.user_names)    //alternativa com count//count =  length(var.user_names)
-    user                     =  each.value               //alternativa com count//user  =  values(aws_iam_user.user)[count.index].name
+    for_each = { for newuser in local.iams_keys : newuser.id_user => newuser} 
+    user                     =  each.value.name               
     pgp_key                  =  var.pgp_key
     password_reset_required  =  true
     password_length          =  10
@@ -23,8 +23,8 @@ resource "aws_iam_user_login_profile" "profile" {
 
 
 resource "aws_iam_user_group_membership" "add_user" {
-    for_each     =  toset(var.user_names)                 //alternativa com count// count = length(var.user_names)
-    user         =  each.value                            //alternativa com count// user  = values(aws_iam_user.user)[count.index].name
+    for_each = { for newuser in local.iams_keys : newuser.id_user => newuser}                
+    user         =  each.value.name                            
     groups       = [aws_iam_group.group.name]
     depends_on   = [aws_iam_user.user]
 }

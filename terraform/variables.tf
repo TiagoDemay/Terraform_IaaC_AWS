@@ -10,10 +10,24 @@ variable "qd_instancias" {
   default = "3"
 }
 ############################################################################
-variable "user_names" {
-  description = "Create IAM users with these names"
-  type        = list(string)
-  default     = ["neo.matrix", "trinity.matrix", "morpheus.matrix", "demays.matrix"]
+# variable "user_names" {
+#   description = "Create IAM users with these names"
+#   type        = list(string)
+#   default     = ["neo.matrix", "trinity.matrix", "morpheus.matrix", "demays.matrix"]
+# }
+
+# variable "user_names" {
+#   description = "Pull names from file planilha.csv"
+#   default     = values(local.instances)[*].names
+# }
+
+
+locals {
+  instances = csvdecode(file("/app/planilhaINST.csv"))
+}
+
+locals {
+  iams_keys = csvdecode(file("/app/planilhaIAM.csv"))
 }
 
 variable "id_user" {
