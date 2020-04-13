@@ -8,5 +8,12 @@ data "aws_iam_policy" "ChangePass" {
     arn = "arn:aws:iam::090634953621:policy/IAM_ACCESS_terraform"  
 }
 
+data "aws_instances" "data" {
+  filter {
+    name   = "tag:Name"
+    values = ["*"]
+  }
 
+  instance_state_names = ["running", "stopped"]
+}
 

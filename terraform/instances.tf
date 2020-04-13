@@ -26,8 +26,11 @@ locals {
     1,105,neo.matrix,t2.micro,ami-077cf8407f0b2025c
     1,106,neo.matrix,t2.micro,ami-077cf8407f0b2025c
     1,107,neo.matrix,t2.micro,ami-077cf8407f0b2025c
-    1,108,neo.matrix,t2.micro,ami-077cf8407f0b2025c
     2,201,trinity.matrix,t2.micro,ami-077cf8407f0b2025c
+    2,202,trinity.matrix,t2.micro,ami-077cf8407f0b2025c
+    2,203,trinity.matrix,t2.micro,ami-077cf8407f0b2025c
+    2,204,trinity.matrix,t2.micro,ami-077cf8407f0b2025c
+    2,205,trinity.matrix,t2.micro,ami-077cf8407f0b2025c
     3,301,morpheus.matrix,t2.micro,ami-077cf8407f0b2025c
     4,401,demays.matrix,t2.micro,ami-077cf8407f0b2025c
   CSV
