@@ -16,7 +16,6 @@ variable "user_names" {
   default     = ["neo.matrix", "trinity.matrix", "morpheus.matrix", "demays.matrix"]
 }
 
-
 variable "id_user" {
   default = "2"
 }
