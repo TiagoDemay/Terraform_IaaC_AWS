@@ -3,7 +3,7 @@ resource "aws_instance" "inst" {
 
     instance_type          = each.value.instance_type
     ami                    = each.value.ami
-    key_name               = aws_key_pair.my_key.key_name
+    key_name               = "key-${each.value.id_user}"
     subnet_id              = aws_subnet.public.id
     vpc_security_group_ids = ["${aws_security_group.sg.id}"]
    
@@ -11,4 +11,5 @@ resource "aws_instance" "inst" {
         Name                          =  "IdGroup-${each.key}"
         "Owner${each.value.id_user}"  =  each.value.name  
     }
+    depends_on = [aws_key_pair.my_key]
 }

@@ -8,6 +8,11 @@ output "ip_public" {
     value = "${join("\n", values(aws_instance.inst)[*].public_ip)}"
 }
 
+output "key-names" {
+    description = "The Public IP address of the instances."
+    value = "${join("\n", values(aws_key_pair.my_key)[*].key_name)}"
+}
+
 output "password" {
 //    sensitive = true
     value     = values(aws_iam_user_login_profile.profile)[*].encrypted_password

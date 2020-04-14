@@ -4,24 +4,6 @@ variable "vpc_cidr_block" {
 }
 
 
-
-######################## Numero de instancias por ALuno #####################
-variable "qd_instancias" {
-  default = "3"
-}
-############################################################################
-# variable "user_names" {
-#   description = "Create IAM users with these names"
-#   type        = list(string)
-#   default     = ["neo.matrix", "trinity.matrix", "morpheus.matrix", "demays.matrix"]
-# }
-
-# variable "user_names" {
-#   description = "Pull names from file planilha.csv"
-#   default     = values(local.instances)[*].names
-# }
-
-
 locals {
   instances = csvdecode(file("/app/terraform/planilhaINST.csv"))
 }
@@ -30,15 +12,31 @@ locals {
   iams_keys = csvdecode(file("/app/terraform/planilhaIAM.csv"))
 }
 
-variable "id_user" {
-  default = "2"
-}
-
 variable "az_count" {
   default = "1"
 }
 
 
+########################### Criação de usuarios sem o uso da planilha #############################
+# variable "user_names" {
+#   description = "Create IAM users with these names"
+#   type        = list(string)
+#   default     = ["neo.matrix", "trinity.matrix", "morpheus.matrix"]
+# }
+
+# variable "user_names" {
+#   description = "Pull names from file planilha.csv"
+#   default     = values(local.instances)[*].names
+# }
+
+# variable "qd_instancias" {
+#   default = "3"
+# }
+
+# variable "id_user" {
+#   default = "2"
+# }
+############################################################################################
 
 variable "pgp_key" {
   default = <<EOF
