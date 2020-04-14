@@ -23,11 +23,11 @@ variable "qd_instancias" {
 
 
 locals {
-  instances = csvdecode(file("/app/planilhaINST.csv"))
+  instances = csvdecode(file("/app/terraform/planilhaINST.csv"))
 }
 
 locals {
-  iams_keys = csvdecode(file("/app/planilhaIAM.csv"))
+  iams_keys = csvdecode(file("/app/terraform/planilhaIAM.csv"))
 }
 
 variable "id_user" {
