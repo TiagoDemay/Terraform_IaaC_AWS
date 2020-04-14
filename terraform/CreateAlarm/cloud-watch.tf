@@ -25,5 +25,4 @@ resource "aws_cloudwatch_metric_alarm" "foobar" {
   dimensions = {
     InstanceId = each.key             
   }
-  depends_on = [aws_instance.inst]
 } 
