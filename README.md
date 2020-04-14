@@ -125,7 +125,23 @@ Lembre-se que a pasta que você iniciou o projeto está sendo compartilhada como
 
 Pelo bem ou pelo mal, apagar ou alterar qualquer arquivo na pasta no seu "host" irá alterar os arquivos dentro do container e vice e versa.
 
-USAGE EXAMPLES
+### Este projeto está estruturado para ser utilizado com 2 planilhas, que são referenciadas no arquivo de variáveis com os nomes de: planilhaINST.csv e planilhaIAM.csv, como elas contem dados de informação sensível, não estão compartilhadas aqui. As imagens abaixo demonstram as configurações que elas devem seguir:
+
+- planilhaINST.csv
+<p align="left">
+  <a href="https://github.com/TiagoDemay/Terraform_IaaC_AWS/tree/master/images">
+    <img src="images/planilhaINST.png" alt="Logo" width="800" height="300">
+  </a>
+</p>
+
+- planilhaIAM.csv
+<p align="left">
+  <a href="https://github.com/TiagoDemay/Terraform_IaaC_AWS/tree/master/images">
+    <img src="images/planilhaIAM.png" alt="Logo" width="800" height="150">
+  </a>
+</p>
+
+
 ## Usage
   
 Para fazer a utilização deste projeto você deve seguir as seguintes etapas:
@@ -144,12 +160,12 @@ Para fazer a utilização deste projeto você deve seguir as seguintes etapas:
 /app/terraform # terraform init
 ```
 sua resposta deve ser parecida com esta:
-<br />
+
 <p align="left">
   <a href="https://github.com/TiagoDemay/Terraform_IaaC_AWS/tree/master/images">
     <img src="images/ConfigBackend.png" alt="Logo" width="1000" height="400">
   </a>
- </p> 
+</p> 
  
 4.  Agora criaremos um plano no terraform, para analisar as mudanças que ele irá fazer a sua conta AWS.
 * O nome do seu arquivo de saída pode ser qualquer um escolhido por você, para que fique didático eu escolhi o nome "plano" 
