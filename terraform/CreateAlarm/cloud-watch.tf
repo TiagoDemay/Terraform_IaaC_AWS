@@ -1,4 +1,13 @@
 
+data "aws_instances" "data" {
+    filter {
+        name   = "tag:Name"
+        values = ["*"]
+    }
+    instance_state_names = ["running", "stopped"]
+}
+
+
 resource "aws_cloudwatch_metric_alarm" "foobar" {
   for_each     =  toset(data.aws_instances.data.ids)
   
