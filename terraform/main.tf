@@ -8,7 +8,7 @@ provider "aws" {
 # Criando bucket para salvar o Estado da Infraestrutura
 terraform {
   backend "s3" {
-    bucket  = "iaas-terraform-demay"
+    bucket  = "aula2020supercomp"
     key     = "terraform.tsstate"
     region  = "us-east-2"
     encrypt = true

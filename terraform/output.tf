@@ -5,13 +5,18 @@ output "arn_user" {
 
 output "ip_public" {
     description = "The Public IP address of the instances."
-    value = "${join("\n", values(aws_instance.inst)[*].public_ip)}"
+    value = values(aws_instance.inst)[*].public_ip
 }
 
-output "key-names" {
-    description = "The Public IP address of the instances."
-    value = "${join("\n", values(aws_key_pair.my_key)[*].key_name)}"
+output "instance_id" {
+    description = "Id das instâncias"
+    value = values(aws_instance.inst)[*].id
 }
+
+#output "key-names" {
+#    description = "The Public IP address of the instances."
+#    value = "${join("\n", values(aws_key_pair.my_key)[*].key_name)}"
+#}
 
 output "password" {
 //    sensitive = true
