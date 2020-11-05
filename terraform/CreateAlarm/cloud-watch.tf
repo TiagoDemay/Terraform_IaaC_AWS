@@ -13,8 +13,8 @@ resource "aws_cloudwatch_metric_alarm" "foobar" {
   
   alarm_name           = "StopMachine-${each.key}"
   namespace            = "AWS/EC2"
-  evaluation_periods   = "5"
-  period               = "1200"
+  evaluation_periods   = "3"
+  period               = "3600"
   alarm_description    = "This metric Stop unsed EC2 instances"
   alarm_actions        = ["arn:aws:automate:us-east-2:ec2:stop"]
   statistic            = "Average"
